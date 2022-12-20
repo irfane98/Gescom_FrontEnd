@@ -13,10 +13,11 @@ import { ProduitService } from 'src/app/services/produit.service';
 export class AddProduitComponent implements OnInit {
 
 newProduit = new Produit();
+categories!:Categorie[];
 newIdCat!:number
 newCategorie!:Categorie
 
-categories!:Categorie[];
+
 
  
 message ?:string ; 
@@ -24,17 +25,28 @@ message ?:string ;
 constructor(private produitService : ProduitService, private router : Router){
 
 }
-  ngOnInit(): void {
-      this.categories = this.produitService.listeCategories()
+ngOnInit(): void {
+  
+  this.produitService.listeCategories().
+  subscribe(cats => {this.categories = cats._embedded.categories;
+    console.log(cats);
+});
   }
 
-  addProduit(){
+  addProduit(){/*
     //console.log(this.newProduit); // affiche le produit ajouter dans la console 
     this.newCategorie=this.produitService.consulterCategorie(this.newIdCat)
     this.newProduit.categorie=this.newCategorie;
     this.produitService.ajouterProduit(this.newProduit)
     this.message = " Le produit "+ this.newProduit.nomProduit + " ajouter avec succès!!"
-    this.router.navigate(['produits'])
+    this.router.navigate(['produits'])*/
+
+    this.newProduit.categorie = this.categories.find(cat => cat.idCat == this.newIdCat)!;
+    this.produitService.ajouterProduit(this.newProduit)
+    .subscribe(prod => {
+    console.log(prod);
+    this.router.navigate(['produits']);
+    });
     }
 
 }
