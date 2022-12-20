@@ -28,16 +28,13 @@ export class ProduitsComponent implements OnInit {
       });
   }
   supprimerProduit(p : Produit){
-  /* // console.log(prod); pour verifier si il affiche bien l'element à supprimer
-   let conf = confirm("Etes-vous sûr ?");
-   if (conf)
-      this.produitService.supprimerProduit(p);
-      */
+
       let conf = confirm("Etes-vous sûr ?");
       if (conf)
       this.produitService.supprimerProduit(p.idProduit).subscribe(() => {
       console.log("produit supprimé");
       this.chargerProduits();
+      
       });
     
   }

@@ -41,7 +41,7 @@ ngOnInit(): void {
     this.message = " Le produit "+ this.newProduit.nomProduit + " ajouter avec succès!!"
     this.router.navigate(['produits'])*/
 
-    this.newProduit.categorie = this.categories.find(cat => cat.idCat == this.newIdCat)!;
+   this.newProduit.categorie = this.categories.find(cat => cat.idCat == this.newIdCat)!;
     this.produitService.ajouterProduit(this.newProduit)
     .subscribe(prod => {
     console.log(prod);

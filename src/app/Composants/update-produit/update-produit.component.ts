@@ -12,7 +12,7 @@ import { ProduitService } from 'src/app/services/produit.service';
 export class UpdateProduitComponent implements OnInit {
 
   currentProduit = new Produit();
-  categories! : Categorie[];
+  categories!: Categorie[];
   updatedCatId! : number;
   
   constructor(private activatedRoute: ActivatedRoute,
@@ -20,17 +20,18 @@ export class UpdateProduitComponent implements OnInit {
               private produitService: ProduitService) { }
 
   ngOnInit(): void {
-    this.produitService.listeCategories().
-    subscribe(cats => {this.categories = cats._embedded.categories;
+    this.produitService.listeCategories()
+    .subscribe(cats =>{this.categories = cats;
     console.log(cats);
-    });
-
-
-    this.produitService.consulterProduit(this.activatedRoute.snapshot.params['id']).
-    subscribe( prod =>{ this.currentProduit = prod; 
-      this.updatedCatId =   this.currentProduit.categorie.idCat;
     
-    } ) ;
+    })
+    this.produitService.consulterProduit(this.activatedRoute.snapshot.params['id'])
+    .subscribe(prod =>{
+      this.currentProduit= prod
+      this.updatedCatId = this.currentProduit.categorie.idCat
+    
+    })
+
     }
     
 
