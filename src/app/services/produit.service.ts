@@ -86,11 +86,11 @@ listeProduit(): Observable<Produit[]>{
 
       
       
-     /* listeCategories():Observable<CategorieWrapper>{
-          return this.http.get<CategorieWrapper>(apiURLCat);
+      listeCategories():Observable<CategorieWrapper>{
+          return this.http.get<CategorieWrapper>(this.apiURLCat);
           }
 
-    /*   consulterCategorie(id:number): Categorie{
+    /*  consulterCategorie(id:number): Categorie{
           return this.categories.find(cat => cat.idCat == id)!;
           } */
 
