@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddProduitComponent } from './Composants/add-produit/add-produit.component';
 import { ProduitsComponent } from './Composants/produits/produits.component';
 import { RechercheParCategorieComponent } from './Composants/recherche-par-categorie/recherche-par-categorie.component';
+import { RechercheParNomComponent } from './Composants/recherche-par-nom/recherche-par-nom.component';
 import { UpdateProduitComponent } from './Composants/update-produit/update-produit.component';
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path:"add-produit", component : AddProduitComponent},
   {path:"updateProduit/:id", component : UpdateProduitComponent},
   {path:"rechercheParCategorie" , component : RechercheParCategorieComponent},
+  {path:"rechercheParNom" , component : RechercheParNomComponent},
   {path:"",redirectTo:"produits",pathMatch:'full'},
 
 ];

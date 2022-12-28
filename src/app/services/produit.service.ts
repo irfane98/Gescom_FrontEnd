@@ -90,13 +90,17 @@ listeProduit(): Observable<Produit[]>{
           return this.http.get<CategorieWrapper>(this.apiURLCat);
           }
 
-    /*  consulterCategorie(id:number): Categorie{
-          return this.categories.find(cat => cat.idCat == id)!;
-          } */
+  /*  consulterCategorie(id:number): Categorie{
+        return this.categories.find(cat => cat.idCat == id)!;
+        } */
 
-          rechercherParCategorie(idCat: number):Observable< Produit[]> {
-            const url = `${apiURL}/prodscat/${idCat}`;
-            return this.http.get<Produit[]>(url);
-            }
-      
+      rechercherParCategorie(idCat: number):Observable< Produit[]> {
+        const url = `${apiURL}/prodscat/${idCat}`;
+        return this.http.get<Produit[]>(url);
+        }
+
+      rechercherParNom(nom: string):Observable< Produit[]> {
+        const url = `${apiURL}/prodsByName/${nom}`;
+        return this.http.get<Produit[]>(url);
+        }
 }
